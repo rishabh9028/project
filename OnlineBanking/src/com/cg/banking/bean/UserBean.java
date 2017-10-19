@@ -1,5 +1,6 @@
 package com.cg.banking.bean;
 
+
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -8,12 +9,12 @@ public class UserBean {
 	private String name;
 	private int acctype;
 	private int accbal;
-	private String date;
+	private Date date;
 	private String address;
-	private String mobileno;
+	private long mobileno;
 	private String email;
 	public UserBean(int accid, String name, int acctype, int accbal,
-			String date, String address, String mobileno, String email) {
+			Date date, String address, long mobileno, String email) {
 		super();
 		this.accid = accid;
 		this.name = name;
@@ -24,8 +25,8 @@ public class UserBean {
 		this.mobileno = mobileno;
 		this.email = email;
 	}
-	public UserBean(String name, int acctype, int accbal, String date,
-			String address, String mobileno, String email) {
+	public UserBean(String name, int acctype, int accbal, Date date,
+			String address, long mobileno, String email) {
 		super();
 		this.name = name;
 		this.acctype = acctype;
@@ -62,10 +63,10 @@ public class UserBean {
 	public void setAccbal(int accbal) {
 		this.accbal = accbal;
 	}
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public String getAddress() {
@@ -74,10 +75,10 @@ public class UserBean {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getMobileno() {
+	public long getMobileno() {
 		return mobileno;
 	}
-	public void setMobileno(String mobileno) {
+	public void setMobileno(long mobileno) {
 		this.mobileno = mobileno;
 	}
 	public String getEmail() {
@@ -93,5 +94,8 @@ public class UserBean {
 				+ ", address=" + address + ", mobileno=" + mobileno
 				+ ", email=" + email + "]";
 	}
+	
+
+
 	
 }
