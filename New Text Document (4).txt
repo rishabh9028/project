@@ -1,0 +1,13 @@
+
+
+
+
+
+CREATE TABLE Customer(Account_ID NUMBER(10) ,Account_Type Number(25),Account_Balance NUMBER(15) ,Open_Date DATE, customer_name VARCHAR2(50), Email VARCHAR2(30), Address VARCHAR2(100), Pancard VARCHAR2(15),mobileno NUMBER(15));
+create sequence acc_id start with 101;
+
+create table admin(username VARCHAR2(25),password Varchar2(25));
+insert into admin values('rishabh','Rishabh@123');
+select * from admin;
+
+CREATE TABLE Transactions(Transaction_ID NUMBER(25) ,Tran_description VARCHAR2(100), DateofTransaction DATE , TransactionType VARCHAR2(1), TranAmount NUMBER(15) ,Account_No NUMBER(10));
