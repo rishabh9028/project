@@ -1,0 +1,40 @@
+
+
+create table admin(username VARCHAR2(25),password Varchar2(25));
+insert into admin values('rishabh','Rishabh@123');
+select * from admin;
+
+drop table transactions;
+CREATE TABLE Transactions(Transaction_ID NUMBER(25) ,Tran_description VARCHAR2(100), DateofTransaction DATE , TransactionType VARCHAR2(1), TranAmount NUMBER(15) ,Account_No NUMBER(10),FOREIGN KEY (Account_No) REFERENCES Customer(Account_id) ON DELETE CASCADE);
+desc Transactions;
+commit;
+select * from transactions;
+INSERT into transactions values(2,'deposit','19-JUL-2017','Y',1000,102);
+commit;
+INSERT into transactions values(3,'deposit','15-OCT-2016','N',1400,103);
+SELECT * FROM Transactions WHERE (trunc(sysdate)=trunc(dateoftransaction));
+INSERT into transactions values(2,'deposit','17-OCT-2017','Y',1000,104);
+INSERT into transactions values(6,'withdraw','20-JAN-2017','N',9000,105);
+
+drop table Transactions;
+
+create table admin(username VARCHAR2(25),password Varchar2(25));
+insert into admin values('rishabh','Rishabh@123');
+select * from customer;
+commit;
+
+CREATE TABLE Customer(Account_ID NUMBER(10) Primary key ,Account_Type Number(25),Account_Balance NUMBER(15) ,Open_Date DATE, customer_name VARCHAR2(50), Email VARCHAR2(30), Address VARCHAR2(100), Pancard VARCHAR2(15),mobileno NUMBER(15));
+desc Customer;
+commit;
+create sequence acc_id start with 101;
+
+drop table Customer;
+
+insert into customer values(acc_id.nextval,1,4000,'17-OCT-2017','Rishabh','r@g.com','akurdi','adzp123',9823223439);
+
+UPDATE customer SET account_balance=1000 WHERE account_id=101;
+
+
+
+
+delete from Customer where account_id=105;
