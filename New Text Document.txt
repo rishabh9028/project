@@ -1,0 +1,108 @@
+create table Account_Master(Account_ID NUMBER(10) primary key, Account_Type VARCHAR2(25),
+Account_Balance NUMBER(15) ,Open_Date DATE);
+
+create table Customer(Account_ID NUMBER(10) , customer_name VARCHAR2(50), Email VARCHAR2(30),
+Address VARCHAR2(100), Pancard VARCHAR2(15));
+
+create table user_details(Account_ID NUMBER ,user_id NUMBER primary key,login_password VARCHAR2(15),
+secret_question VARCHAR2(50),Transaction_password VARCHAR2(15),lock_status VARCHAR2(1));
+
+insert into user_details values(100,1,'Abhijeet','Who is your childhood fav hero?','Abhi123','Y');
+insert into user_details values(101,2,'Jyo','Which is your fav place?','Jyo123','N');
+
+create table Fund_Transfer(Fund_Transfer_ID NUMBER primary key ,Account_ID NUMBER(10) ,Payee_Account_ID NUMBER(10), 
+Date_Of_Transfer DATE, Transfer_Amount NUMBER(15));
+
+desc fund_transfer;
+
+create table Transactions(Transaction_ID NUMBER(10) primary key ,Transaction_description VARCHAR2(100),
+Date_of_Transaction DATE,Transaction_Type VARCHAR2(1), Transaction_Amount NUMBER(15), Account_No NUMBER(10));
+
+create table Service_Tracker(Service_ID NUMBER primary key, Service_Description VARCHAR2(100),
+Account_ID NUMBER,Service_Raised_Date DATE ,Service_status VARCHAR2(20));
+
+insert into service_tracker values(1000,'Cheque book',100,'16-September-2017','Open');
+
+CREATE TABLE payee(account_id NUMBER , 
+                    payee_account_id NUMBER PRIMARY KEY,
+                    nick_name VARCHAR2(40)
+                    ); 
+insert into transactions values(1,'credited','14/Sep/2017','Y',2000,100);
+insert into transactions values(2,'debited','15/Sep/2017','Y',2000,100);
+
+
+select * from transactions;
+select sysdate from dual;
+
+update transactions set date_of_transaction = '14/Sep/2017' where transaction_id = 2;   
+
+insert into transactions values(2,'credited','14-September-2017','Y',2000,200);
+insert into transactions values(3,'debited','14-September-2017','Y',2000,300);
+insert into transactions values(4,'debited','14-September-2017','Y',2000,400);
+insert into transactions values(5,'debited','14-September-2017','Y',2000,500);
+insert into transactions values(5,'debited','14-September-2017','Y',2000,500);
+insert into transactions values(6,'debited','17-September-2017','Y',2000,600);
+insert into transactions values(7,'debited','18-September-2017','Y',2000,700);
+insert into transactions values(9,'debited','19-Sep-2017','Y',2000,800);
+insert into transactions values(10,'debited','19/Sep/2017','Y',2000,800);
+
+truncate table transactions;
+commit;
+
+Select * from Transactions where date_of_transaction between '19-Sep-2017' and  sysdate and account_no=800;
+select * from transactions where account_no=100;
+
+select * from transactions;
+commit;
+
+
+
+Select * from Transactions where account_no=100 and DATE_OF_TRANSACTION >= '14-SEPTEMBER-2017' and DATE_OF_TRANSACTION <= '14-SEPTEMBER-2017';
+
+Select * from Transactions where account_no=100 and DATE_OF_TRANSACTION >='14-SEPTEMBER-2017'  and DATE_OF_TRANSACTION <='14-SEPTEMBER-2017'
+
+Select count(*) from transactions;
+insert into transactions values(3,'credited','14/Sep/2017','Y',2000,200);
+insert into transactions values(4,'credited','14/Sep/2017','Y',2000,300);
+insert into transactions values(5,'credited','15/Sep/2017','Y',2000,300);
+
+SELECT * FROM transactions order by transaction_id where rownum<=1 and account_no=100 ;
+
+SELECT * 
+  FROM (SELECT* 
+          FROM transactions 
+         ORDER 
+            BY transaction_id DESC
+       ) 
+  WHERE ROWNUM <= 3 and account_no=100;
+  ORDER BY ROWNUM DESC;
+SELECT top 3 * FROM transactions;
+
+insert into transactions values(6,'debited','15/Sep/2017','Y',2000,100);
+insert into transactions values(7,'debited','15/Sep/2017','Y',2000,100);
+insert into transactions values(8,'debited','15/Sep/2017','Y',2000,100);
+
+Select * from user_details;
+
+
+commit;
+
+
+
+
+
+create table user_details(Account_ID NUMBER ,user_id NUMBER primary key,login_password VARCHAR2(15),
+secret_question VARCHAR2(50),secret_question_answer VARCHAR2(50),Transaction_password VARCHAR2(15),lock_status VARCHAR2(1)); 
+
+insert into user_details values(100,1,'abhijeet','Who is your childhood fav hero?','me','Abhi123','Y');
+insert into user_details values(101,2,'tani','Who is your childhood fav hero?','you','tani123','Y');
+insert into user_details values(102,3,'Jyo','Which is your fav place?','me','Jyo123','N'); 
+Select * from user_details where user_id=1;
+select * from user_details;
+
+desc user_details;
+update user_details set login_password='12345' where user_id=2;
+commit; 
+
+
+Select * from user_details where user_id=1 and login_password='abhijeet';
